@@ -25,17 +25,22 @@ namespace CodeGenerator {
             // Specify all blueprints
             var blueprintNames = new string[0];
 
-            generate(codeGenerators, poolNames, blueprintNames);
+            generate(
+                codeGenerators,
+                poolNames,
+                blueprintNames,
+                "../../../EntitasPure/Generated/"
+            );
         }
 
         static void generate(ICodeGenerator[] codeGenerators,
                              string[] poolNames,
-                             string[] blueprintNames) {
+                             string[] blueprintNames,
+                             string path) {
 
             var assembly = Assembly.GetAssembly(typeof(Entity));
             var provider = new TypeReflectionProvider(assembly.GetTypes(), poolNames, blueprintNames);
 
-            const string path = "../../../EntitasPure/Generated/";
             var generatedFiles = Entitas.CodeGenerator.CodeGenerator.Generate(provider, path, codeGenerators);
 
             foreach(var file in generatedFiles) {
