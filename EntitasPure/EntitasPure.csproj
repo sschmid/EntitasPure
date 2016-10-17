@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{772BB360-13BA-4D80-9768-73D791D5C3F5}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>EntitasPure</RootNamespace>
+    <AssemblyName>EntitasPure</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Libraries\Entitas\EntitasException.cs" />
+    <Compile Include="Libraries\Entitas\Entity.cs" />
+    <Compile Include="Libraries\Entitas\EntityCollector.cs" />
+    <Compile Include="Libraries\Entitas\EntityIndex.cs" />
+    <Compile Include="Libraries\Entitas\Group.cs" />
+    <Compile Include="Libraries\Entitas\Pool.cs" />
+    <Compile Include="Libraries\Entitas\Pools.cs" />
+    <Compile Include="Libraries\Entitas\ReactiveSystem.cs" />
+    <Compile Include="Libraries\Entitas\Systems.cs" />
+    <Compile Include="Libraries\Entitas\Caching\EntitasCache.cs" />
+    <Compile Include="Libraries\Entitas\Caching\ObjectCache.cs" />
+    <Compile Include="Libraries\Entitas\Caching\ObjectPool.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\CodeGenerator.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\TypeReflectionCodeGenerator.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Attributes\CustomComponentNameAttribute.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Attributes\CustomPrefixAttribute.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Attributes\DontGenerateAttribute.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Attributes\IndexKeyAttribute.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Attributes\PoolAttribute.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Attributes\SingleEntityAttribute.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Generators\BlueprintsGenerator.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Generators\ComponentExtensionsGenerator.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Generators\ComponentIndicesGenerator.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Generators\OldPoolsGenerator.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Generators\PoolAttributesGenerator.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Generators\PoolsGenerator.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Interfaces\IBlueprintsCodeGenerator.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Interfaces\ICodeGenerator.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Interfaces\ICodeGeneratorDataProvider.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Interfaces\IComponentCodeGenerator.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Interfaces\IPoolCodeGenerator.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Intermediate\CodeGenFile.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Intermediate\ComponentInfo.cs" />
+    <Compile Include="Libraries\Entitas\CodeGenerator\Providers\TypeReflectionProvider.cs" />
+    <Compile Include="Libraries\Entitas\Extensions\CollectionExtension.cs" />
+    <Compile Include="Libraries\Entitas\Extensions\EntityExtension.cs" />
+    <Compile Include="Libraries\Entitas\Extensions\GroupExtension.cs" />
+    <Compile Include="Libraries\Entitas\Extensions\IMatcherExtension.cs" />
+    <Compile Include="Libraries\Entitas\Extensions\PoolExtension.cs" />
+    <Compile Include="Libraries\Entitas\Extensions\TypeExtension.cs" />
+    <Compile Include="Libraries\Entitas\Interfaces\ICleanupSystem.cs" />
+    <Compile Include="Libraries\Entitas\Interfaces\IComponent.cs" />
+    <Compile Include="Libraries\Entitas\Interfaces\IExecuteSystem.cs" />
+    <Compile Include="Libraries\Entitas\Interfaces\IInitializeSystem.cs" />
+    <Compile Include="Libraries\Entitas\Interfaces\IMatcher.cs" />
+    <Compile Include="Libraries\Entitas\Interfaces\IReactiveSystem.cs" />
+    <Compile Include="Libraries\Entitas\Interfaces\ISystem.cs" />
+    <Compile Include="Libraries\Entitas\Interfaces\ITearDownSystem.cs" />
+    <Compile Include="Libraries\Entitas\Matcher\Matcher.cs" />
+    <Compile Include="Libraries\Entitas\Matcher\MatcherEquals.cs" />
+    <Compile Include="Libraries\Entitas\Matcher\MatcherInterfaces.cs" />
+    <Compile Include="Libraries\Entitas\Matcher\MatcherStatic.cs" />
+    <Compile Include="Libraries\Entitas\Matcher\MatcherToString.cs" />
+    <Compile Include="Libraries\Entitas\Matcher\TriggerOnEvent.cs" />
+    <Compile Include="Libraries\Entitas\Serialization\PublicMemberInfo.cs" />
+    <Compile Include="Libraries\Entitas\Serialization\TypeSerializationExtension.cs" />
+    <Compile Include="Libraries\Entitas\Serialization\Blueprints\Blueprint.cs" />
+    <Compile Include="Libraries\Entitas\Serialization\Blueprints\BlueprintEntityExtension.cs" />
+    <Compile Include="Libraries\Entitas\Serialization\Blueprints\ComponentBlueprint.cs" />
+    <Compile Include="Libraries\Entitas\Serialization\Blueprints\HideInBlueprintInspectorAttribute.cs" />
+    <Compile Include="Libraries\Entitas\Serialization\Blueprints\SerializableMember.cs" />
+    <Compile Include="Libraries\Entitas\Serialization\Configuration\CodeGeneratorConfig.cs" />
+    <Compile Include="Libraries\Entitas\Serialization\Configuration\EntitasPreferences.cs" />
+    <Compile Include="Libraries\Entitas\Serialization\Configuration\EntitasPreferencesConfig.cs" />
+    <Compile Include="Libraries\Entitas\Serialization\Configuration\Properties.cs" />
+    <Compile Include="EntitasPure\PositionComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Generated\*.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Libraries\" />
+    <Folder Include="EntitasPure\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Libraries\Entitas\entitas_version" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

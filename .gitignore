@@ -1,0 +1,16 @@
+# Windows
+Thumbs.db
+
+# Mac
+.DS_Store
+
+# Xamarin
+obj
+bin
+*.userprefs
+test-results
+
+# Visual Studio Code
+.vscode
+
+# Custom
