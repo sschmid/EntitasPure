@@ -10,48 +10,51 @@ namespace CodeGenerator {
 
         public static void Main(string[] args) {
 
-            // All code generators that should be used
-            var codeGenerators = new ICodeGenerator[] {
-                new ComponentIndicesGenerator(),
-                new ComponentExtensionsGenerator(),
-                new PoolAttributesGenerator(),
-                new PoolsGenerator(),
-                new BlueprintsGenerator()
-            };
-
-            // Specify all pools
-            var poolNames = new[] { "Core", "Meta" };
-
-            // Specify all blueprints
-            var blueprintNames = new string[0];
-
-            generate(
-                codeGenerators,
-                poolNames,
-                blueprintNames,
-                "../../../EntitasPure/Generated/"
-            );
+            // Configure code generator in Entitas.properties file
+            generate("../../Entitas.properties");
         }
 
-        static void generate(ICodeGenerator[] codeGenerators,
-                             string[] poolNames,
-                             string[] blueprintNames,
-                             string path) {
+        static void generate(string configPath) {
 
-            var assembly = Assembly.GetAssembly(typeof(Entity));
-            var provider = new TypeReflectionProvider(assembly.GetTypes(), poolNames, blueprintNames);
+            EntitasPreferences.CONFIG_PATH = configPath;
+            var config = new CodeGeneratorConfig(EntitasPreferences.LoadConfig());
 
-            var generatedFiles = Entitas.CodeGenerator.CodeGenerator.Generate(provider, path, codeGenerators);
+            Console.WriteLine("Generating...");
 
-            foreach(var file in generatedFiles) {
-                Console.WriteLine(file.generatorName + ": " + file.fileName);
-            }
+            var codeGenerator = new Entitas.CodeGenerator.CodeGenerator(
+                getEnabled<ICodeGeneratorDataProvider>(config.dataProviders),
+                getEnabled<ICodeGenerator>(config.codeGenerators),
+                getEnabled<ICodeGenFilePostProcessor>(config.postProcessors)
+            );
 
-            var totalGeneratedFiles = generatedFiles.Select(file => file.fileName).Distinct().Count();
+            var dryFiles = codeGenerator.DryRun();
+            var files = codeGenerator.Generate();
 
-            Console.WriteLine("");
-            Console.WriteLine("Generated " + totalGeneratedFiles + " files.");
-            Console.Read();
+            var totalGeneratedFiles = files.Select(file => file.fileName).Distinct().Count();
+
+            var sloc = dryFiles
+                .Select(file => file.fileContent.ToUnixLineEndings())
+                .Sum(content => content.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries).Length);
+
+            var loc = files
+                .Select(file => file.fileContent.ToUnixLineEndings())
+                .Sum(content => content.Split(new[] { '\n' }).Length);
+
+            Console.WriteLine("Generated " + totalGeneratedFiles + " files (" + sloc + " sloc, " + loc + " loc)");
+        }
+
+        static T[] getEnabled<T>(string[] types) {
+            return GetTypes<T>()
+                .Where(type => types.Contains(type.FullName))
+                .Select(type => (T)Activator.CreateInstance(type))
+                .ToArray();
+        }
+
+        public static Type[] GetTypes<T>() {
+            return Assembly.GetAssembly(typeof(T)).GetTypes()
+                           .Where(type => type.ImplementsInterface<T>())
+                           .OrderBy(type => type.FullName)
+                           .ToArray();
         }
     }
 }

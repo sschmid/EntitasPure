@@ -41,5 +41,8 @@
       <Name>EntitasPure</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Entitas.properties" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

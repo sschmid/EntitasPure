@@ -1,19 +1,17 @@
 ﻿using System;
-using Entitas;
 
 namespace EntitasPure {
 
     class MainClass {
 
         public static void Main(string[] args) {
-            var pools = Pools.sharedInstance;
-            pools.SetAllPools();
+            var contexts = Contexts.sharedInstance;
 
-            var e = pools.core.CreateEntity()
-                         .AddPosition(12, 34);
+            var entity = contexts.game.CreateEntity();
+            entity.AddPosition(12, 34);
+			Console.WriteLine(entity);
 
 
-            Console.WriteLine(e);
             Console.WriteLine("Done. Press any key...");
             Console.Read();
         }
