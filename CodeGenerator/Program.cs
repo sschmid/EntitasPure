@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
-using Entitas;
 using Entitas.CodeGenerator;
 
 namespace CodeGenerator {
@@ -16,16 +14,9 @@ namespace CodeGenerator {
 
         static void generate(string configPath) {
 
-            EntitasPreferences.CONFIG_PATH = configPath;
-            var config = new CodeGeneratorConfig(EntitasPreferences.LoadConfig());
-
             Console.WriteLine("Generating...");
 
-            var codeGenerator = new Entitas.CodeGenerator.CodeGenerator(
-                getEnabled<ICodeGeneratorDataProvider>(config.dataProviders),
-                getEnabled<ICodeGenerator>(config.codeGenerators),
-                getEnabled<ICodeGenFilePostProcessor>(config.postProcessors)
-            );
+            var codeGenerator = CodeGeneratorUtil.CodeGeneratorFromConfig(configPath);
 
             var dryFiles = codeGenerator.DryRun();
             var files = codeGenerator.Generate();
@@ -41,20 +32,6 @@ namespace CodeGenerator {
                 .Sum(content => content.Split(new[] { '\n' }).Length);
 
             Console.WriteLine("Generated " + totalGeneratedFiles + " files (" + sloc + " sloc, " + loc + " loc)");
-        }
-
-        static T[] getEnabled<T>(string[] types) {
-            return GetTypes<T>()
-                .Where(type => types.Contains(type.FullName))
-                .Select(type => (T)Activator.CreateInstance(type))
-                .ToArray();
-        }
-
-        public static Type[] GetTypes<T>() {
-            return Assembly.GetAssembly(typeof(T)).GetTypes()
-                           .Where(type => type.ImplementsInterface<T>())
-                           .OrderBy(type => type.FullName)
-                           .ToArray();
         }
     }
 }
