@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitasPure", "EntitasPure\EntitasPure.csproj", "{772BB360-13BA-4D80-9768-73D791D5C3F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenerator", "CodeGenerator\CodeGenerator.csproj", "{DF9322FE-5A9B-4783-88BD-1EAA3B37B043}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -15,34 +13,38 @@ Global
 		{772BB360-13BA-4D80-9768-73D791D5C3F5}.Debug|x86.Build.0 = Debug|x86
 		{772BB360-13BA-4D80-9768-73D791D5C3F5}.Release|x86.ActiveCfg = Release|x86
 		{772BB360-13BA-4D80-9768-73D791D5C3F5}.Release|x86.Build.0 = Release|x86
-		{DF9322FE-5A9B-4783-88BD-1EAA3B37B043}.Debug|x86.ActiveCfg = Debug|x86
-		{DF9322FE-5A9B-4783-88BD-1EAA3B37B043}.Debug|x86.Build.0 = Debug|x86
-		{DF9322FE-5A9B-4783-88BD-1EAA3B37B043}.Release|x86.ActiveCfg = Release|x86
-		{DF9322FE-5A9B-4783-88BD-1EAA3B37B043}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
-		$1.DirectoryNamespaceAssociation = None
 		$1.ResourceNamePolicy = FileName
 		$0.TextStylePolicy = $2
 		$2.inheritsSet = VisualStudio
 		$2.inheritsScope = text/plain
 		$2.scope = text/plain
+		$2.FileWidth = 80
+		$2.TabsToSpaces = True
 		$0.CSharpFormattingPolicy = $3
-		$3.IndentSwitchSection = True
-		$3.NewLinesForBracesInTypes = False
-		$3.NewLinesForBracesInMethods = False
-		$3.SpacingAfterMethodDeclarationName = False
-		$3.SpaceAfterMethodCallName = False
-		$3.SpaceAfterControlFlowStatementKeyword = False
-		$3.SpaceBeforeOpenSquareBracket = False
 		$3.inheritsSet = Mono
 		$3.inheritsScope = text/x-csharp
 		$3.scope = text/x-csharp
+		$3.NewLinesForBracesInTypes = False
+		$3.NewLinesForBracesInMethods = False
+		$3.NewLinesForBracesInProperties = False
+		$3.NewLinesForBracesInAccessors = False
+		$3.NewLinesForBracesInAnonymousMethods = False
+		$3.NewLinesForBracesInControlBlocks = False
+		$3.NewLinesForBracesInAnonymousTypes = False
+		$3.NewLinesForBracesInObjectCollectionArrayInitializers = False
+		$3.NewLinesForBracesInLambdaExpressionBody = False
+		$3.NewLineForElse = False
+		$3.NewLineForCatch = False
+		$3.NewLineForFinally = False
+		$3.NewLineForMembersInObjectInit = False
+		$3.NewLineForMembersInAnonymousTypes = False
+		$3.NewLineForClausesInQuery = False
+		$3.SpaceAfterControlFlowStatementKeyword = False
 		$0.StandardHeader = $4
-		$4.Text = 
-		$4.IncludeInNewFiles = True
 		$0.NameConventionPolicy = $5
 		$5.Rules = $6
 		$6.NamingRule = $7
@@ -56,5 +58,9 @@ Global
 		$8.String = T
 		$7.RequiredSuffixes = $9
 		$9.String = Exception
+		$0.TextStylePolicy = $10
+		$10.FileWidth = 80
+		$10.TabsToSpaces = True
+		$10.scope = text/x-csharp
 	EndGlobalSection
 EndGlobal
