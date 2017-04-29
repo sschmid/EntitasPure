@@ -11,7 +11,6 @@ namespace EntitasPure {
             entity.AddPosition(12, 34);
 			Console.WriteLine(entity);
 
-
             Console.WriteLine("Done. Press any key...");
             Console.Read();
         }

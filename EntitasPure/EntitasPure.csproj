@@ -47,6 +47,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generated\Game\Components\GamePositionComponent.cs" />
+    <Compile Include="Generated\Game\GameComponentsLookup.cs" />
+    <Compile Include="Generated\Game\GameAttribute.cs" />
+    <Compile Include="Generated\Game\GameContext.cs" />
+    <Compile Include="Generated\Game\GameMatcher.cs" />
+    <Compile Include="Generated\Contexts.cs" />
+    <Compile Include="Generated\Game\GameEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="EntitasPure\PositionComponent.cs" />
   </ItemGroup>
@@ -59,9 +68,6 @@
     <None Include="Libraries\Entitas\Entitas.Migration.dll" />
     <None Include="Libraries\Entitas\Entitas.Utils.dll" />
     <None Include="Libraries\Entitas\Entitas.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Generated\**\*.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
