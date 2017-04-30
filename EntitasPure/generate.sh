@@ -1,4 +1,3 @@
 #!/bin/bash -e
-cd EntitasPure
+msbuild EntitasPure.csproj
 mono ../CodeGenerator/entitas.exe gen
-exit 0
